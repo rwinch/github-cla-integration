@@ -28,7 +28,7 @@ import javax.persistence.Table;
  * A class representing an email address domain that has been signed for
  */
 @Entity
-@Table(name = "signedDomains")
+@Table(name = "signed_domains")
 public class SignedDomain {
 
     @Id
@@ -38,11 +38,11 @@ public class SignedDomain {
     private volatile String domain;
 
     @ManyToOne
-    @JoinColumn(name = "agreementId")
+    @JoinColumn(name = "agreement_id")
     private volatile Agreement agreement;
 
     @ManyToOne
-    @JoinColumn(name = "signatoryId")
+    @JoinColumn(name = "signatory_id")
     private volatile CorporateSignatory corporateSignatory;
 
     /**

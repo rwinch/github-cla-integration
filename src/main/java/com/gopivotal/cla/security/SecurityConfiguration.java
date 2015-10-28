@@ -26,7 +26,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
@@ -41,19 +40,22 @@ import org.springframework.security.web.access.ExceptionTranslationFilter;
 @ImportResource("classpath:META-INF/spring/security.xml")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    // @formatter:off
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/", "/errors/**", "/resources/**");
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/", "/errors/**", "/resources/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin().and()
+            .httpBasic();
     }
+    // @formatter:on
 
     @Bean
     public AuthenticationManager authenticationManager(ObjectPostProcessor<Object> objectPostProcessor) throws Exception {
         return new AuthenticationManagerBuilder(objectPostProcessor).inMemoryAuthentication().and().build();
-    }
-
-    @Override
-    protected void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication();
     }
 
     private static HttpSecurity ssoHttpConfiguration(HttpSecurity http, OAuth2ClientContextFilter client) throws Exception {

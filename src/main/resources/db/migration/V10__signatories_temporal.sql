@@ -14,13 +14,4 @@
  * limitations under the License.
  */
 
-CREATE TABLE signedAddresses(
-	id SERIAL PRIMARY KEY,
-	address VARCHAR(128) NOT NULL,
-	agreementId SERIAL NOT NULL,
-	signatoryId SERIAL NOT NULL,
-	
-	FOREIGN KEY(agreementId) REFERENCES agreements(id) ON DELETE CASCADE,
-	FOREIGN KEY(signatoryId) REFERENCES signatories(id) ON DELETE CASCADE,
-	CONSTRAINT signedAddressesTuple UNIQUE (address, agreementId)
-);
+ALTER TABLE signatories ALTER COLUMN signing_date TYPE TIMESTAMP WITH TIME ZONE USING NULL;

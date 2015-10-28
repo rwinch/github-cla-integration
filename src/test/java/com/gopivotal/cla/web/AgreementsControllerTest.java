@@ -90,18 +90,17 @@ public final class AgreementsControllerTest extends AbstractControllerTest {
 
         Agreement agreement = this.agreementRepository.save(new Agreement("test-name"));
 
-        this.mockMvc.perform(
-            post("/agreements/{agreementId}/versions", agreement.getId()).param("name", "test-name").param("individualContent",
-                "test-individual-content").param("corporateContent", "test-corporate-content")) //
-        .andExpect(status().isFound()) //
-        .andExpect(view().name(new Matches("redirect:/agreements/[\\d]+/versions/[\\d]+")));
+        this.mockMvc.perform(post("/agreements/{agreementId}/versions", agreement.getId()).param("name", "test-name").param("individualContent",
+            "test-individual-content").param("corporateContent", "test-corporate-content")) //
+            .andExpect(status().isFound()) //
+            .andExpect(view().name(new Matches("redirect:/agreements/[\\d]+/versions/[\\d]+")));
 
         assertEquals(1, countRowsInTable("versions"));
         Map<String, Object> row = this.jdbcTemplate.queryForMap("SELECT * FROM versions");
-        assertEquals(agreement.getId(), row.get("agreementId"));
+        assertEquals(agreement.getId(), row.get("agreement_id"));
         assertEquals("test-name", row.get("name"));
-        assertEquals("test-individual-html", row.get("individualContent"));
-        assertEquals("test-corporate-html", row.get("corporateContent"));
+        assertEquals("test-individual-html", row.get("individual_content"));
+        assertEquals("test-corporate-html", row.get("corporate_content"));
     }
 
     @Test

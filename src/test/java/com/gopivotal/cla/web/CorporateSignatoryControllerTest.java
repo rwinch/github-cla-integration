@@ -106,17 +106,17 @@ public final class CorporateSignatoryControllerTest extends AbstractControllerTe
 
         assertEquals(1, countRowsInTable("signatories"));
         Map<String, Object> row = this.jdbcTemplate.queryForMap("SELECT * FROM signatories");
-        assertEquals(version.getId(), row.get("versionId"));
-        assertNotNull(row.get("signingDate"));
+        assertEquals(version.getId(), row.get("version_id"));
+        assertNotNull(row.get("signing_date"));
         assertEquals("test-name", decrypt(row.get("name")));
-        assertEquals("test-email", decrypt(row.get("emailAddress")));
-        assertEquals("test-mailing-address", decrypt(row.get("mailingAddress")));
+        assertEquals("test-email", decrypt(row.get("email_address")));
+        assertEquals("test-mailing-address", decrypt(row.get("mailing_address")));
         assertEquals("test-country", decrypt(row.get("country")));
-        assertEquals("test-telephone-number", decrypt(row.get("telephoneNumber")));
+        assertEquals("test-telephone-number", decrypt(row.get("telephone_number")));
         assertEquals("test-company", decrypt(row.get("company")));
         assertEquals("test-title", decrypt(row.get("title")));
 
-        assertEquals(2, countRowsInTable("signedDomains"));
+        assertEquals(2, countRowsInTable("signed_domains"));
     }
 
 }

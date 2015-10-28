@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-CREATE TABLE signatories(
+CREATE TABLE signed_domains(
 	id SERIAL PRIMARY KEY,
-	versionId SERIAL NOT NULL,
-	signingDate INTEGER NOT NULL,
-	name VARCHAR(128) NOT NULL,
-	emailAddress VARCHAR(128) NOT NULL,
-	mailingAddress VARCHAR(1024) NOT NULL,
-	country VARCHAR(128) NOT NULL,
-	telephoneNumber VARCHAR(64) NOT NULL,
-	company VARCHAR(128),
-	title VARCHAR(128),
-	
-	FOREIGN KEY(versionId) REFERENCES versions(id) ON DELETE CASCADE
+	domain VARCHAR(128) NOT NULL,
+	agreement_id SERIAL NOT NULL,
+	signatory_id SERIAL NOT NULL,
+
+	FOREIGN KEY(agreement_id) REFERENCES agreements(id) ON DELETE CASCADE,
+	FOREIGN KEY(signatory_id) REFERENCES signatories(id) ON DELETE CASCADE,
+	CONSTRAINT signed_domains_tuple UNIQUE (domain, agreement_id)
 );

@@ -30,12 +30,6 @@ import com.gopivotal.cla.github.MarkdownService;
 @Configuration
 class TestConfiguration {
 
-    @Bean
-    String databaseUrl() {
-        return String.format("postgresql://%s@127.0.0.1:5432/test", System.getenv("USER"));
-    }
-
-    @Bean
     String encryptionKey() {
         return "aYvcyUMwzGpKh7HptueVQJPkCVSYjxpOOSZeVby4FWP";
     }

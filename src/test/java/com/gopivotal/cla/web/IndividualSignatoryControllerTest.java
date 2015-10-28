@@ -104,16 +104,16 @@ public final class IndividualSignatoryControllerTest extends AbstractControllerT
 
         assertEquals(1, countRowsInTable("signatories"));
         Map<String, Object> row = this.jdbcTemplate.queryForMap("SELECT * FROM signatories");
-        assertEquals(version.getId(), row.get("versionId"));
-        assertNotNull(row.get("signingDate"));
+        assertEquals(version.getId(), row.get("version_id"));
+        assertNotNull(row.get("signing_date"));
         assertEquals("test-name", decrypt(row.get("name")));
-        assertEquals("test-email", decrypt(row.get("emailAddress")));
-        assertEquals("test-mailing-address", decrypt(row.get("mailingAddress")));
+        assertEquals("test-email", decrypt(row.get("email_address")));
+        assertEquals("test-mailing-address", decrypt(row.get("mailing_address")));
         assertEquals("test-country", decrypt(row.get("country")));
-        assertEquals("test-telephone-number", decrypt(row.get("telephoneNumber")));
+        assertEquals("test-telephone-number", decrypt(row.get("telephone_number")));
         assertNull(row.get("company"));
         assertNull(row.get("title"));
 
-        assertEquals(2, countRowsInTable("signedAddresses"));
+        assertEquals(2, countRowsInTable("signed_addresses"));
     }
 }

@@ -40,7 +40,7 @@ import org.hibernate.annotations.Type;
 @Entity
 @Table(name = "signatories")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "signatoryType")
+@DiscriminatorColumn(name = "signatory_type")
 @DiscriminatorValue("individual")
 public class IndividualSignatory {
 
@@ -49,7 +49,7 @@ public class IndividualSignatory {
     private volatile Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "versionId")
+    @JoinColumn(name = "version_id")
     private volatile Version version;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -72,7 +72,7 @@ public class IndividualSignatory {
 
     /**
      * Create a new instance
-     * 
+     *
      * @param version The version that was signed
      * @param name The name of the signatory
      * @param emailAddress The email address of the signatory
@@ -92,7 +92,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the synthetic id of the signatory
-     * 
+     *
      * @return the synthetic id of the signatory
      */
     public final Integer getId() {
@@ -101,7 +101,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the version that was signed
-     * 
+     *
      * @return the version that was signed
      */
     public final Version getVersion() {
@@ -110,7 +110,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the date of the signing
-     * 
+     *
      * @return the date of the signing
      */
     public final Date getSigningDate() {
@@ -119,7 +119,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the name of the signatory
-     * 
+     *
      * @return the name of the signatory
      */
     public final String getName() {
@@ -128,7 +128,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the email address of the signatory
-     * 
+     *
      * @return the email address of the signatory
      */
     public final String getEmailAddress() {
@@ -137,7 +137,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the mailing address of the signatory
-     * 
+     *
      * @return the mailing address of the signatory
      */
     public final String getMailingAddress() {
@@ -146,7 +146,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the country of the signatory
-     * 
+     *
      * @return the country of the signatory
      */
     public final String getCountry() {
@@ -155,7 +155,7 @@ public class IndividualSignatory {
 
     /**
      * Returns the telephone number of the signatory
-     * 
+     *
      * @return the telephone number of the signatory
      */
     public final String getTelephoneNumber() {

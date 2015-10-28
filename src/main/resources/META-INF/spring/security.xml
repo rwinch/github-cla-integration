@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans
-		xmlns="http://www.springframework.org/schema/security/oauth2" 
+		xmlns="http://www.springframework.org/schema/security/oauth2"
 		xmlns:beans="http://www.springframework.org/schema/beans"
 		xmlns:util="http://www.springframework.org/schema/util"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -18,11 +18,11 @@
 			</util:list>
 		</beans:property>
 	</rest-template>
-	
+
 	<resource id="adminGitHubResource"
 			type="authorization_code"
-			client-id="#{@gitHubClientId}"
-			client-secret="#{@gitHubClientSecret}"
+			client-id="${github.client.id}"
+			client-secret="${github.client.secret}"
 			user-authorization-uri="https://github.com/login/oauth/authorize"
 			access-token-uri="https://github.com/login/oauth/access_token"
 			scope="user:email"

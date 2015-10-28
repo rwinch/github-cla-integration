@@ -14,12 +14,4 @@
  * limitations under the License.
  */
 
-CREATE TABLE versions(
-	id SERIAL PRIMARY KEY,
-	agreementId SERIAL NOT NULL,
-	name VARCHAR(128) NOT NULL,
-	individualContent TEXT NOT NULL,
-	corporateContent TEXT NOT NULL,
-	
-	FOREIGN KEY(agreementId) REFERENCES agreements(id) ON DELETE CASCADE
-);
+ALTER TABLE agreements ADD CONSTRAINT agreement_name UNIQUE (name);

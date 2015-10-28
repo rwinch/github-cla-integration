@@ -21,25 +21,24 @@ import static org.mockito.Mockito.when;
 import org.jasypt.encryption.pbe.PBEStringEncryptor;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextHierarchy;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.gopivotal.cla.CliApplication;
 import com.gopivotal.cla.github.GitHubClient;
 import com.gopivotal.cla.github.Organization;
 import com.gopivotal.cla.github.Organizations;
 import com.gopivotal.cla.github.Repositories;
 import com.gopivotal.cla.github.User;
-import com.gopivotal.cla.repository.RepositoryConfiguration;
 
 @WebAppConfiguration
-@ContextHierarchy({ @ContextConfiguration(classes = { TestConfiguration.class, RepositoryConfiguration.class }),
-    @ContextConfiguration(classes = WebConfiguration.class) //
-})
+@SpringApplicationConfiguration(classes = CliApplication.class)
+@TestPropertySource("/test-application.properties")
 public abstract class AbstractControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     protected volatile MockMvc mockMvc;

@@ -14,4 +14,11 @@
  * limitations under the License.
  */
 
-ALTER TABLE signatories ALTER COLUMN signingDate TYPE TIMESTAMP WITH TIME ZONE USING NULL;
+CREATE TABLE repositories(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(128) NOT NULL,
+	agreement_id SERIAL NOT NULL,
+	access_token VARCHAR(128) NOT NULL,
+
+	FOREIGN KEY(agreement_id) REFERENCES agreements(id) ON DELETE CASCADE
+);

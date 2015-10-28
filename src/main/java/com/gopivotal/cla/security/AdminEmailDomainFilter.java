@@ -40,7 +40,7 @@ final class AdminEmailDomainFilter extends GenericFilterBean {
     private final GitHubClient gitHubClient;
 
     @Autowired
-    AdminEmailDomainFilter(@Value("#{@adminEmailDomains}") String[] adminEmailDomains, GitHubClient gitHubClient) {
+    AdminEmailDomainFilter(@Value("${admin.email.domains}") String[] adminEmailDomains, GitHubClient gitHubClient) {
         this.adminEmailDomains = adminEmailDomains;
         this.gitHubClient = gitHubClient;
     }

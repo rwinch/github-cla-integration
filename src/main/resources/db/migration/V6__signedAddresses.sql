@@ -14,4 +14,13 @@
  * limitations under the License.
  */
 
-ALTER TABLE repositories ADD CONSTRAINT repositoryName UNIQUE (name);
+CREATE TABLE signed_addresses(
+	id SERIAL PRIMARY KEY,
+	address VARCHAR(128) NOT NULL,
+	agreement_id SERIAL NOT NULL,
+	signatory_id SERIAL NOT NULL,
+
+	FOREIGN KEY(agreement_id) REFERENCES agreements(id) ON DELETE CASCADE,
+	FOREIGN KEY(signatory_id) REFERENCES signatories(id) ON DELETE CASCADE,
+	CONSTRAINT signed_addresses_tuple UNIQUE (address, agreement_id)
+);

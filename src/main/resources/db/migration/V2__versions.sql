@@ -14,4 +14,12 @@
  * limitations under the License.
  */
 
-ALTER TABLE signatories ADD COLUMN signatoryType VARCHAR(16) NOT NULL;
+CREATE TABLE versions(
+	id SERIAL PRIMARY KEY,
+	agreement_id SERIAL NOT NULL,
+	name VARCHAR(128) NOT NULL,
+	individual_content TEXT NOT NULL,
+	corporate_content TEXT NOT NULL,
+
+	FOREIGN KEY(agreement_id) REFERENCES agreements(id) ON DELETE CASCADE
+);

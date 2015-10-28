@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-CREATE TABLE repositories(
+CREATE TABLE signatories(
 	id SERIAL PRIMARY KEY,
+	version_id SERIAL NOT NULL,
+	signing_date INTEGER NOT NULL,
 	name VARCHAR(128) NOT NULL,
-	agreementId SERIAL NOT NULL,
-	accessToken VARCHAR(128) NOT NULL,
-	
-	FOREIGN KEY(agreementId) REFERENCES agreements(id) ON DELETE CASCADE
+	email_address VARCHAR(128) NOT NULL,
+	mailing_address VARCHAR(1024) NOT NULL,
+	country VARCHAR(128) NOT NULL,
+	telephone_number VARCHAR(64) NOT NULL,
+	company VARCHAR(128),
+	title VARCHAR(128),
+
+	FOREIGN KEY(version_id) REFERENCES versions(id) ON DELETE CASCADE
 );

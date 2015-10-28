@@ -14,13 +14,4 @@
  * limitations under the License.
  */
 
-CREATE TABLE signedDomains(
-	id SERIAL PRIMARY KEY,
-	domain VARCHAR(128) NOT NULL,
-	agreementId SERIAL NOT NULL,
-	signatoryId SERIAL NOT NULL,
-	
-	FOREIGN KEY(agreementId) REFERENCES agreements(id) ON DELETE CASCADE,
-	FOREIGN KEY(signatoryId) REFERENCES signatories(id) ON DELETE CASCADE,
-	CONSTRAINT signedDomainsTuple UNIQUE (domain, agreementId)
-);
+ALTER TABLE signatories ADD COLUMN signatory_type VARCHAR(16) NOT NULL;

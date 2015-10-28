@@ -55,10 +55,10 @@ public final class RepositoriesControllerTest extends AbstractControllerTest {
         Agreement bravoAgreement = this.agreementRepository.save(new Agreement("bravo"));
         Agreement alphaAgreement = this.agreementRepository.save(new Agreement("alpha"));
         this.linkedRepositoryRepository.save(new LinkedRepository(bravoAgreement, "foxtrot", "test-access-token"));
-        LinkedRepository bravoLinkedRepository = this.linkedRepositoryRepository.save(new LinkedRepository(bravoAgreement, "bravo",
-            "test-access-token"));
-        LinkedRepository alphaLinkedRepository = this.linkedRepositoryRepository.save(new LinkedRepository(alphaAgreement, "alpha",
-            "test-access-token"));
+        LinkedRepository bravoLinkedRepository = this.linkedRepositoryRepository.save(
+            new LinkedRepository(bravoAgreement, "bravo", "test-access-token"));
+        LinkedRepository alphaLinkedRepository = this.linkedRepositoryRepository.save(
+            new LinkedRepository(alphaAgreement, "alpha", "test-access-token"));
 
         Repository echoRepository = new Repository("echo", null, new Permissions(true, false, false));
         Repository deltaRepository = new Repository("delta", null, new Permissions(false, false, false));
@@ -95,7 +95,7 @@ public final class RepositoriesControllerTest extends AbstractControllerTest {
         assertEquals(1, countRowsInTable("repositories"));
         Map<String, Object> row = this.jdbcTemplate.queryForMap("SELECT * FROM repositories");
         assertEquals("org/repo", row.get("name"));
-        assertEquals(agreement.getId(), row.get("agreementId"));
-        assertEquals("test-access-token", decrypt(row.get("accessToken")));
+        assertEquals(agreement.getId(), row.get("agreement_id"));
+        assertEquals("test-access-token", decrypt(row.get("access_token")));
     }
 }

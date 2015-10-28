@@ -38,7 +38,7 @@ public class LinkedRepository {
     private volatile Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "agreementId")
+    @JoinColumn(name = "agreement_id")
     private volatile Agreement agreement;
 
     private volatile String name;

@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-ALTER TABLE agreements ADD CONSTRAINT agreementName UNIQUE (name);
+ALTER TABLE repositories ADD CONSTRAINT repository_name UNIQUE (name);
