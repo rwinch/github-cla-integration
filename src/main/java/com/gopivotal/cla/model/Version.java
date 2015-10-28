@@ -30,7 +30,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "versions")
-public final class Version {
+public class Version {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +50,7 @@ public final class Version {
 
     /**
      * Create a new instance
-     * 
+     *
      * @param agreement The agreement this version is related to
      * @param name The name of the version
      * @param individualAgreementContent The content of the individual agreement
@@ -65,7 +65,7 @@ public final class Version {
 
     /**
      * Returns the synthetic id of the version
-     * 
+     *
      * @return the synthetic id of the version
      */
     public Integer getId() {
@@ -74,7 +74,7 @@ public final class Version {
 
     /**
      * Returns the agreement this version is related to
-     * 
+     *
      * @return agreement this version is related to
      */
     public Agreement getAgreement() {
@@ -83,7 +83,7 @@ public final class Version {
 
     /**
      * Returns the name of the version
-     * 
+     *
      * @return the name of the version
      */
     public String getName() {
@@ -92,7 +92,7 @@ public final class Version {
 
     /**
      * Returns the content of the individual agreement
-     * 
+     *
      * @return the content of the individual agreement
      */
     public String getIndividualAgreementContent() {
@@ -101,7 +101,7 @@ public final class Version {
 
     /**
      * Returns the content of the corporate agreement
-     * 
+     *
      * @return the content of the corporate agreement
      */
     public String getCorporateAgreementContent() {

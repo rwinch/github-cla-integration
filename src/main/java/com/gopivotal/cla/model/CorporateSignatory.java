@@ -26,7 +26,7 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @DiscriminatorValue("corporate")
-public final class CorporateSignatory extends IndividualSignatory {
+public class CorporateSignatory extends IndividualSignatory {
 
     @Type(type = "encryptedString")
     private volatile String company;
@@ -36,7 +36,7 @@ public final class CorporateSignatory extends IndividualSignatory {
 
     /**
      * Create a new instance
-     * 
+     *
      * @param version The version that was signed
      * @param name The name of the contact
      * @param emailAddress The email address of the contact
@@ -55,7 +55,7 @@ public final class CorporateSignatory extends IndividualSignatory {
 
     /**
      * Returns the name of the company
-     * 
+     *
      * @return the name of the company
      */
     public String getCompany() {
@@ -64,7 +64,7 @@ public final class CorporateSignatory extends IndividualSignatory {
 
     /**
      * Returns the title of the contact
-     * 
+     *
      * @return the title of the contact
      */
     public String getTitle() {

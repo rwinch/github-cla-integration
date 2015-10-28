@@ -29,7 +29,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "signedAddresses")
-public final class SignedAddress {
+public class SignedAddress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +47,7 @@ public final class SignedAddress {
 
     /**
      * Creates an instance
-     * 
+     *
      * @param address The signed for address
      * @param agreement The agreement that was signed
      * @param individualSignatory The signatory that signed for the email address
@@ -60,7 +60,7 @@ public final class SignedAddress {
 
     /**
      * Returns the synthetic id of the signed address
-     * 
+     *
      * @return the synthetic id of the signed address
      */
     public Integer getId() {
@@ -69,7 +69,7 @@ public final class SignedAddress {
 
     /**
      * Returns the signed for address
-     * 
+     *
      * @return the signed for address
      */
     public String getAddress() {
@@ -78,7 +78,7 @@ public final class SignedAddress {
 
     /**
      * Returns the agreement that was signed
-     * 
+     *
      * @return the agreement that was signed
      */
     public Agreement getAgreement() {
@@ -87,7 +87,7 @@ public final class SignedAddress {
 
     /**
      * Returns the signatory that signed for the email address
-     * 
+     *
      * @return the signatory that signed for the email address
      */
     public IndividualSignatory getIndividualSignatory() {

@@ -27,7 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "agreements")
-public final class Agreement {
+public class Agreement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public final class Agreement {
 
     /**
      * Create a new instance
-     * 
+     *
      * @param name The name of the agreement
      */
     public Agreement(String name) {
@@ -47,7 +47,7 @@ public final class Agreement {
 
     /**
      * Returns the synthetic id of the agreement
-     * 
+     *
      * @return the synthetic id of the agreement
      */
     public Integer getId() {
@@ -56,7 +56,7 @@ public final class Agreement {
 
     /**
      * Returns the name of the agreement
-     * 
+     *
      * @return the name of the agreement
      */
     public String getName() {

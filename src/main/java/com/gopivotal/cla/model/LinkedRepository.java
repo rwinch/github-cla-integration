@@ -31,7 +31,7 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @Table(name = "repositories")
-public final class LinkedRepository {
+public class LinkedRepository {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +48,7 @@ public final class LinkedRepository {
 
     /**
      * Create a new instance
-     * 
+     *
      * @param id The synthetic id of the repository
      * @param agreement The agreement the repository is linked to
      * @param name The name of the repository
@@ -62,7 +62,7 @@ public final class LinkedRepository {
 
     /**
      * Returns the synthetic id of the repository
-     * 
+     *
      * @return the synthetic id of the repository
      */
     public Integer getId() {
@@ -71,7 +71,7 @@ public final class LinkedRepository {
 
     /**
      * Returns the agreement the repository is linked to
-     * 
+     *
      * @return the agreement the repository is linked to
      */
     public Agreement getAgreement() {
@@ -80,7 +80,7 @@ public final class LinkedRepository {
 
     /**
      * Returns the name of the repository
-     * 
+     *
      * @return the name of the repository
      */
     public String getName() {
@@ -89,7 +89,7 @@ public final class LinkedRepository {
 
     /**
      * Returns the access token to use to update the repository
-     * 
+     *
      * @return the access token to use to update the repository
      */
     public String getAccessToken() {
